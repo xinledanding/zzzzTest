@@ -91,6 +91,10 @@ public class FlutterFlakeView extends SurfaceView implements SurfaceHolder.Callb
         mRepeatCount = repeatCount;
     }
 
+    public void setInterpolator(Interpolator interpolator) {
+        mInterpolator = interpolator;
+    }
+
     public void setItemClick(FlutterItemClick itemClick) {
         mItemClick = itemClick;
     }

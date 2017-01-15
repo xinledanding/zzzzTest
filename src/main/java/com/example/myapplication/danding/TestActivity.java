@@ -31,6 +31,8 @@ public class TestActivity extends Activity {
                 view.start();
             }
         });
+
+        view.start();
         view.setFlutterItems(new ArrayList<FlutterFlakeView.FlutterItem>() {
             {
                 add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
