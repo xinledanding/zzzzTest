@@ -9,8 +9,6 @@ import android.widget.Toast;
 import com.example.myapplication.FlutterFlakeView;
 import com.example.myapplication.R;
 
-import java.util.ArrayList;
-
 
 /**
  * Created by le.xin on 2017/1/15.
@@ -26,47 +24,14 @@ public class TestActivity extends Activity {
         findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                view.setRepeatCount(100);
-                view.setFlutterItems(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher) ,1000);
+                view.setRepeatCount(1);
+                view.setFlutterItems(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher) ,20);
                 view.start();
             }
         });
-
-        view.start();
-        view.setFlutterItems(new ArrayList<FlutterFlakeView.FlutterItem>() {
-            {
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-                add(new FlutterFlakeView.FlutterItem(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher)));
-            }
-        });
-        view.start();
         view.setRepeatCount(1);
+        view.setFlutterItems(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher) ,8);
+        view.start();
         view.setItemClick(new FlutterFlakeView.FlutterItemClick() {
             @Override
             public boolean onClick(FlutterFlakeView.FlutterItem item) {

@@ -69,6 +69,8 @@ public class FlutterFlakeView extends SurfaceView implements SurfaceHolder.Callb
 
     public void setFlutterItems(final Bitmap bitmap, int count) {
         if (bitmap == null || count <= 0) {
+            mFlutterItems = null;
+            playCount = 0;
             return;
         }
         List<FlutterItem> flutterItems = new ArrayList<>();
@@ -76,6 +78,19 @@ public class FlutterFlakeView extends SurfaceView implements SurfaceHolder.Callb
             flutterItems.add(new FlutterItem(bitmap));
         }
         setFlutterItems(flutterItems);
+    }
+
+    public void setFlutterItemsByBitmaps(List<Bitmap> bitmaps) {
+        if(bitmaps != null) {
+            List<FlutterItem> flutterItems = new ArrayList<>();
+            for (Bitmap bitmap : bitmaps) {
+                flutterItems.add(new FlutterItem(bitmap));
+            }
+            setFlutterItems(flutterItems);
+        } else {
+            mFlutterItems = null;
+        }
+        playCount = 0;
     }
 
     public void setFlutterItems(List<FlutterItem> flutterItems) {
@@ -184,7 +199,9 @@ public class FlutterFlakeView extends SurfaceView implements SurfaceHolder.Callb
                                         getRandom(getWidth()), getRandom(getHeight()),
                                         getRandom(0, getWidth() - bitmapWidth), getHeight());
                                 item.mPathMeasure = new PathMeasure(item.mPath , false);
-                                item.mDropRate = getRandom(0.005f, 0.008f);
+                                if(item.mDropRate <= 0) {
+                                    item.mDropRate = getRandom(0.005f, 0.008f);
+                                }
                                 item.mIsDrawOver = false;
                                 item.mDropValue = getRandom(0.1f);
                             }
@@ -262,13 +279,17 @@ public class FlutterFlakeView extends SurfaceView implements SurfaceHolder.Callb
         private Bitmap mBitmap;
         private Path mPath;
         private PathMeasure mPathMeasure;
-        private float mDropRate;
-        private float mDropValue;
+        private float mDropRate;        // 速率
+        private float mDropValue;       // 下降到什么位置了
         private boolean mIsDrawOver;
         public RectF mRect = new RectF();
 
         public FlutterItem(Bitmap bitmap) {
             mBitmap = bitmap;
+        }
+
+        public void setDropRate(float dropRate) {
+            mDropRate = dropRate;
         }
     }
 

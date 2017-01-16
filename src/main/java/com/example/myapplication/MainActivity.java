@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,6 +27,19 @@ public class MainActivity extends Activity {
 
             }
         });
+
+        CountDownTimer countDownTimer = new CountDownTimer(1000 , 100) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        };
+
 
         Bitmap drawingCache = getViewBitmap(viewById1 , 100 , 100);
         ImageView viewById2 = (ImageView) findViewById(R.id.image);

@@ -13,11 +13,11 @@ public class ExampleUnitTest {
             list.add("淡定 --  " + i);
         }
 
-        List<String> list2 = list.subList(0 , 5);
-        list.remove(2);
-
-        for (String content : list2) {
-            System.out.println("nimei == " + content);
-        }
+//        List<String> list2 = list.subList(0 , 5);
+//        list.remove(2);
+//
+//        for (String content : list2) {
+//            System.out.println("nimei == " + content);
+//        }
     }
 }
