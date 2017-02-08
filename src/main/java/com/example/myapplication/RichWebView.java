@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,8 +10,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.webkit.JavascriptInterface;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -18,6 +19,7 @@ import android.webkit.WebViewClient;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static android.webkit.WebSettings.LayoutAlgorithm.SINGLE_COLUMN;
 
@@ -28,23 +30,20 @@ import static android.webkit.WebSettings.LayoutAlgorithm.SINGLE_COLUMN;
 
 public class RichWebView extends WebView implements View.OnTouchListener {
 
+    public static final int NO_IMG_LOAD_TIME = 10000;   // 没有图片时的加载时长
+    public static final int HAVE_IMG_LOAD_TIME = 30000;
+    private ViewTreeObserver.OnScrollChangedListener mListener;
+
     public RichWebView(Context context) {
         super(context);
-        init(context);
-    }
-
-    private void init(Context context) {
-        setWebViewClient(new MyWebViewClient());
     }
 
     public RichWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context);
     }
 
     public RichWebView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context);
     }
 
     private String js = "\n" +
@@ -69,41 +68,34 @@ public class RichWebView extends WebView implements View.OnTouchListener {
     }
 
     private URLClickListener mURLClickListener;
-
-    // 监听 所有点击的链接，如果拦截到我们需要的，就跳转到相对应的页面。
-    private class MyWebViewClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (mURLClickListener != null) {
-                if (mURLClickListener.urlClick(url)) {
-                    return true;
-                }
-            }
-            return super.shouldOverrideUrlLoading(view, url);
-        }
-    }
+    private boolean pageFinished = false;
 
     private WebViewClient mWebViewClient = new WebViewClient() {
         @Override
-        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-            System.out.println("view = [" + view + "], request = [" + request + "]");
-            return super.shouldOverrideUrlLoading(view, request);
+        public void onPageFinished(WebView view, String url) {
+            pageFinished = true;
         }
-
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            System.out.println("view = [" + view + "], url = [" + url + "]");
             if(mURLClickListener != null) {
                 if(mURLClickListener.urlClick(url)) {
-                   return true;
+                    return true;
                 }
             }
-            return  super.shouldOverrideUrlLoading(view ,url);
+            // 这里表示此webView默认不处理点击事件
+            return true;
         }
     };
 
+
+    private boolean haveImg = false;
+    private boolean scrollAndLoading = false;
+    private long setDataTime;
+    private static Pattern IMAGE_TAG_PATTERN = Pattern.compile("\\<img(.*?)\\>");
     public void setData(String richStr ,RichWebViewAttr attr) {
+        setWebViewClient(mWebViewClient);
+//        getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
         WebSettings settings = getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setSupportZoom(false);
@@ -115,7 +107,7 @@ public class RichWebView extends WebView implements View.OnTouchListener {
         settings.setLoadWithOverviewMode(true);
         settings.setDomStorageEnabled(true);
         settings.setRenderPriority(WebSettings.RenderPriority.HIGH);
-        settings.setAppCacheEnabled(false);
+        settings.setAppCacheEnabled(true);
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
         if (SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR1) {
             try {
@@ -124,12 +116,71 @@ public class RichWebView extends WebView implements View.OnTouchListener {
             }
         }
 
+        setDataTime = System.currentTimeMillis();
+        pageFinished = false;
+        if(!TextUtils.isEmpty(richStr)) {
+            if(IMAGE_TAG_PATTERN.matcher(richStr).find()) {
+                haveImg = true;
+            }
+        }
+
+        scrollAndLoading = true;
+
         setOnTouchListener(this);
         addJavascriptInterface(new JsInterface(), "imageClick"); //JS交互
         if(attr == null) {
             attr = new RichWebViewAttr();
         }
         loadDataWithBaseURL(null, getCss(attr) + richStr + js, "text/html", "utf-8", null);
+        setFocusable(false);
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+
+        mListener = new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                scrollAndLoading = true;
+                setDataTime = System.currentTimeMillis() - (haveImg ? NO_IMG_LOAD_TIME / 2 : HAVE_IMG_LOAD_TIME / 2);
+                postInvalidate();
+            }
+        };
+        getViewTreeObserver().addOnScrollChangedListener(mListener);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+
+        if(mListener != null) {
+            getViewTreeObserver().removeOnScrollChangedListener(mListener);
+        }
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+        System.out.println("RichWebView.draw" + this);
+        if((pageFinished && scrollAndLoading) || System.currentTimeMillis() - setDataTime < (haveImg ? NO_IMG_LOAD_TIME : HAVE_IMG_LOAD_TIME)) {
+            scrollAndLoading = false;
+            super.draw(canvas);
+        }
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
     }
 
     public void setData(String richStr) {
@@ -167,6 +218,9 @@ public class RichWebView extends WebView implements View.OnTouchListener {
     float x,y;
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        if(onImageClick == null) {
+            return false;
+        }
         //通过wenview的touch来响应web上的图片点击事件
         float density = getResources().getDisplayMetrics().density; //屏幕密度
         float touchX = event.getX() / density;  //必须除以屏幕密度

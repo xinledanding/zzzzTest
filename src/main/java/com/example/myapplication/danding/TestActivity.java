@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.Toast;
 
 import com.example.myapplication.FlutterFlakeView;
@@ -29,8 +30,9 @@ public class TestActivity extends Activity {
                 view.start();
             }
         });
-        view.setRepeatCount(1);
+        view.setRepeatCount(3);
         view.setFlutterItems(BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher) ,8);
+        view.setInterpolator(new BounceInterpolator());
         view.start();
         view.setItemClick(new FlutterFlakeView.FlutterItemClick() {
             @Override

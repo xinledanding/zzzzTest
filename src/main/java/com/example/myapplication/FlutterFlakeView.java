@@ -32,7 +32,7 @@ import static android.graphics.PathMeasure.POSITION_MATRIX_FLAG;
  * 飘落的动画
  */
 public class FlutterFlakeView extends SurfaceView implements SurfaceHolder.Callback {
-    public static final int SLEEP_TIME = 30;
+    public static final int SLEEP_TIME = 10;
     private SurfaceHolder mSurfaceHolder;
     private Paint mCleanPaint;
     private Matrix mMatrix;
@@ -193,17 +193,24 @@ public class FlutterFlakeView extends SurfaceView implements SurfaceHolder.Callb
                             if(item.mPath == null && getWidth() > 0 && getHeight() > 0) {
                                 item.mPath = new Path();
                                 int bitmapWidth = item.mBitmap.getWidth();
-                                item.mPath.moveTo(getRandom(0 ,getWidth() - bitmapWidth), 0);
+                                int bitmapHeight = item.mBitmap.getHeight();
+                                item.mPath.moveTo(getRandom(0 ,getWidth() - bitmapWidth), 0 - bitmapHeight);
                                 item.mPath.cubicTo(
                                         getRandom(getWidth()), getRandom(getHeight()),
                                         getRandom(getWidth()), getRandom(getHeight()),
                                         getRandom(0, getWidth() - bitmapWidth), getHeight());
                                 item.mPathMeasure = new PathMeasure(item.mPath , false);
                                 if(item.mDropRate <= 0) {
-                                    item.mDropRate = getRandom(0.005f, 0.008f);
+                                    item.mDropRate = getRandom(0.003f, 0.006f);
                                 }
                                 item.mIsDrawOver = false;
-                                item.mDropValue = getRandom(0.1f);
+                                item.mDropValue = 0;
+                                item.mDelayCreateTime = getRandom(100 * SLEEP_TIME);
+                            }
+
+                            item.mDelayCreateTime -= SLEEP_TIME;
+                            if(item.mDelayCreateTime > 0) {
+                                continue;
                             }
 
                             item.mDropValue += item.mDropRate;
@@ -282,6 +289,7 @@ public class FlutterFlakeView extends SurfaceView implements SurfaceHolder.Callb
         private float mDropRate;        // 速率
         private float mDropValue;       // 下降到什么位置了
         private boolean mIsDrawOver;
+        private int mDelayCreateTime;   // 延时产生的时间
         public RectF mRect = new RectF();
 
         public FlutterItem(Bitmap bitmap) {
