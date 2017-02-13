@@ -10,8 +10,15 @@
         android:text="button1"
         android:layout_height="wrap_content"/>
 
+    <com.example.myapplication.danding.TestView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"/>
+
     <com.example.myapplication.FlutterFlakeView
         android:id="@+id/flutter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+
+
 </LinearLayout>
