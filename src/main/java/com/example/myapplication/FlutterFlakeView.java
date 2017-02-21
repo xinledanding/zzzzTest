@@ -11,6 +11,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
@@ -44,6 +45,7 @@ public class FlutterFlakeView extends SurfaceView implements SurfaceHolder.Callb
 
     private int mRepeatCount = 1;
     int playCount = 0;
+    private boolean mIsCreated = false;
 
     public FlutterFlakeView(Context context) {
         super(context);
@@ -61,6 +63,9 @@ public class FlutterFlakeView extends SurfaceView implements SurfaceHolder.Callb
     }
 
     private void init() {
+        setZOrderOnTop(true);
+        getHolder().setFormat(PixelFormat.TRANSLUCENT);
+
         getHolder().addCallback(this);
         mMatrix = new Matrix();
         mCleanPaint = new Paint();
@@ -135,11 +140,27 @@ public class FlutterFlakeView extends SurfaceView implements SurfaceHolder.Callb
             mDrawThread.interrupt();
             mDrawThread = null;
         }
+
+        if(mIsCreated) {
+            try {
+                Canvas canvas = mSurfaceHolder.lockCanvas();
+                if (canvas != null) {
+                    mCleanPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+                    canvas.drawPaint(mCleanPaint);
+                    mCleanPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
+
+                    mSurfaceHolder.unlockCanvasAndPost(canvas);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         mSurfaceHolder = holder;
+        mIsCreated = true;
     }
 
     @Override
@@ -149,6 +170,7 @@ public class FlutterFlakeView extends SurfaceView implements SurfaceHolder.Callb
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        mIsCreated = false;
         stop();
         mItemClick = null;
     }

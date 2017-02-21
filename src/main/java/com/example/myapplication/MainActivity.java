@@ -26,6 +26,9 @@ public class MainActivity extends Activity {
         mRichWebView2 = (RichWebView) findViewById(R.id.web_view2);
         mRichWebView3 = (RichWebView) findViewById(R.id.web_view3);
 
+
+
+
         findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
