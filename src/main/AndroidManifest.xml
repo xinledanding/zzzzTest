@@ -27,14 +27,22 @@
         </activity>
 
         <activity android:name=".danding.TestActivity" android:theme="@style/WelComeTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
         </activity>
 
         <activity android:name=".MainActivity2">
 
+        </activity>
+
+        <activity android:name=".danding.TestProgressActivity">
+
+        </activity>
+
+        <activity android:name=".danding.HeheActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
     </application>
