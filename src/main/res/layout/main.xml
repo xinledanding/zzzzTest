@@ -21,12 +21,6 @@
                 android:layout_height="wrap_content"
                 android:text="卡萨丁哈"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:background="@color/colorAccent"
-                android:layout_height="400dp"/>
-
-
             <com.example.myapplication.RichWebView
                 android:id="@+id/web_view1"
                 android:layout_width="match_parent"
