@@ -18,6 +18,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+
+
         mRichWebView1 = (RichWebView) findViewById(R.id.web_view1);
 //        mRichWebView1.setData("<p style=\"font-size:16px;line-height:28px;margin:20px 0px;" +
 //                "color:#333333\"><span style=\"font-size:16px;line-height:28px;color:#333333\"><span " +
@@ -275,6 +277,7 @@ public class MainActivity extends Activity {
                 "</p>\n" +
                 "<div id=\"rich_album_bottom\">\n" +
                 "</div>";
+
 
         findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
             @Override

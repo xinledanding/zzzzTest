@@ -9,7 +9,18 @@ public class ExampleUnitTest {
 
     @Test
     public void addition_isCorrect() throws Exception {
-        System.out.println(Math.tan(Math.PI * 45 / 180)); ;
+
+        try {
+            System.out.println("333");
+            return;
+        }catch (Exception e) {
+            System.out.println("22");
+
+        } finally {
+            System.out.println("1111");
+            return;
+        }
+
     }
 
 }
