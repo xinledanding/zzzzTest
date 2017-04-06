@@ -2,6 +2,9 @@ package com.example.myapplication;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ExampleUnitTest {
 
     @Gender
@@ -9,18 +12,14 @@ public class ExampleUnitTest {
 
     @Test
     public void addition_isCorrect() throws Exception {
+        List<String> names = new ArrayList<>();
+        names.add("淡定1");
+        names.add("淡定2");
+        names.add("淡定3");
 
-        try {
-            System.out.println("333");
-            return;
-        }catch (Exception e) {
-            System.out.println("22");
-
-        } finally {
-            System.out.println("1111");
-            return;
-        }
-
+        System.out.println(names.subList(0 ,3)); ;
     }
+
+
 
 }
