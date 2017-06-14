@@ -4,78 +4,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="爱上当看见爱上"
+        android:layout_centerInParent="true"
+        android:background="@drawable/circle_btn_bgk"
+        android:textSize="3dp"/>
 
-    <ScrollView
+    <ListView
+        android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_below="@id/text">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    </ListView>
 
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="卡萨丁哈"/>
-
-            <com.example.myapplication.RichWebView
-                android:id="@+id/web_view1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp">
-
-
-            </com.example.myapplication.RichWebView>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="卡萨丁哈"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.example.myapplication.RichWebView
-                    android:id="@+id/web_view2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="18dp"
-                    android:layout_marginRight="18dp">
-
-
-                </com.example.myapplication.RichWebView>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:background="@color/colorAccent"/>
-
-                <com.example.myapplication.RichWebView
-                    android:id="@+id/web_view3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="18dp"
-                    android:layout_marginRight="18dp">
-
-
-                </com.example.myapplication.RichWebView>
-
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
 </RelativeLayout>
