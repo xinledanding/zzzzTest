@@ -18,6 +18,12 @@ public class ExampleUnitTest {
         names.add("淡定3");
 
         System.out.println(names.subList(0 ,3)); ;
+
+        StringBuilder builder = new StringBuilder("淡定");
+        builder.append(' ');
+        builder.append("奥斯卡的");
+        System.out.println(builder);
+
     }
 
 
