@@ -2,8 +2,10 @@ package com.example.myapplication;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class ExampleUnitTest {
 
@@ -12,18 +14,9 @@ public class ExampleUnitTest {
 
     @Test
     public void addition_isCorrect() throws Exception {
-        List<String> names = new ArrayList<>();
-        names.add("淡定1");
-        names.add("淡定2");
-        names.add("淡定3");
-
-        System.out.println(names.subList(0 ,3)); ;
-
-        StringBuilder builder = new StringBuilder("淡定");
-        builder.append(' ');
-        builder.append("奥斯卡的");
-        System.out.println(builder);
-
+        Map<String ,List<String>> maps = new HashMap<>();
+        Set<Map.Entry<String, List<String>>> entries = maps.entrySet();
+        System.out.println("" + entries);
     }
 
 

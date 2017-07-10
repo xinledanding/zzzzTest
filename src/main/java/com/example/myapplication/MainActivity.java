@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,7 @@ public class MainActivity extends Activity {
             add("淡定");
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,16 +41,42 @@ public class MainActivity extends Activity {
         mListView = (ListView) findViewById(R.id.listview);
         mListView.setAdapter(new MyAdapter());
 
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            HttpURLConnection connection = (HttpURLConnection) new URL("http://www.ximalaya" +
+                                    ".com/explore").openConnection();
+
+                            System.out.println("dand == " + connection.getHeaderFields());
+                            connection.setRequestMethod("GET");
+                            connection.setRequestProperty("danding", "asd");
+                            int responseCode = connection.getResponseCode();
+                            System.out.println("看啊 ==  " + responseCode);
+                            System.out.println("dand == " + connection.getHeaderFields());
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+            }
+        });
 
 //        ImageView viewById = (ImageView) findViewById(R.id.main_play_bottom_small_icon);
 //        viewById.setImageResource(R.drawable.danding);
 
 
-
 //        Bitmap bitmap = ((BitmapDrawable)ContextCompat.getDrawable(this ,R.drawable.xiaoshuo)).getBitmap();
 //
-//        Bitmap srcBitmap = ((BitmapDrawable) ContextCompat.getDrawable(this, R.drawable.main_albumbox_layer)).getBitmap();
-//        Bitmap drawingBitmap = Bitmap.createBitmap(srcBitmap.getWidth(), srcBitmap.getHeight(), srcBitmap.getConfig());
+//        Bitmap srcBitmap = ((BitmapDrawable) ContextCompat.getDrawable(this, R.drawable.main_albumbox_layer))
+// .getBitmap();
+//        Bitmap drawingBitmap = Bitmap.createBitmap(srcBitmap.getWidth(), srcBitmap.getHeight(), srcBitmap.getConfig
+// ());
 //        Canvas canvas = new Canvas(drawingBitmap);
 //        Paint paint = new Paint();
 //        canvas.drawBitmap(bitmap, new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()),
