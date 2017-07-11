@@ -2,18 +2,22 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 /**
@@ -31,6 +35,9 @@ public class MainActivity extends Activity {
             add("淡定");
             add("淡定");
             add("淡定");
+            add("淡定");
+            add("淡定");
+            add("淡定");
         }
     };
 
@@ -41,27 +48,33 @@ public class MainActivity extends Activity {
         mListView = (ListView) findViewById(R.id.listview);
         mListView.setAdapter(new MyAdapter());
 
+        final GifView viewById1 = (GifView) findViewById(R.id.gifview);
+
+
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        Request request = new Request.Builder().url("http://img.zcool.cn/community/01965756f0a5de6ac7257d202cc205.gif").build();
+
                         try {
-                            HttpURLConnection connection = (HttpURLConnection) new URL("http://www.ximalaya" +
-                                    ".com/explore").openConnection();
+                            final Response execute = new OkHttpClient().newCall(request).execute();
+                            final byte[] bytes = execute.body().bytes();
+                            new Handler(getMainLooper()).post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    viewById1.setFullImageView(false);
+                                    viewById1.setGifSource(bytes);
 
-                            System.out.println("dand == " + connection.getHeaderFields());
-                            connection.setRequestMethod("GET");
-                            connection.setRequestProperty("danding", "asd");
-                            int responseCode = connection.getResponseCode();
-                            System.out.println("看啊 ==  " + responseCode);
-                            System.out.println("dand == " + connection.getHeaderFields());
+                                }
+                            });
 
-                        } catch (Exception e) {
+                        } catch (IOException e) {
                             e.printStackTrace();
                         }
+
                     }
                 }).start();
             }
@@ -109,9 +122,9 @@ public class MainActivity extends Activity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View inflate = LayoutInflater.from(MainActivity.this).inflate(R.layout.item_text, null);
-            TextView viewById = (TextView) inflate.findViewById(R.id.text);
-            viewById.setText(names.get(position));
+            View inflate = LayoutInflater.from(MainActivity.this).inflate(R.layout.item_text, parent ,false);
+            ImageView imageView = (ImageView) inflate.findViewById(R.id.item_img);
+            imageView.setImageDrawable(ContextCompat.getDrawable(getApplicationContext() ,R.drawable.danding));
             return inflate;
         }
     }

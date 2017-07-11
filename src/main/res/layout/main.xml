@@ -41,10 +41,15 @@
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/text">
+        android:layout_height="match_parent">
 
     </ListView>
+
+    <com.example.myapplication.GifView
+        android:id="@+id/gifview"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/button"
