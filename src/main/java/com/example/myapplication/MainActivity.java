@@ -1,24 +1,23 @@
 package com.example.myapplication;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.view.LayoutInflater;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ImageSpan;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 /**
  * Created by le.xin on 2017/1/9.
@@ -26,107 +25,178 @@ import okhttp3.Response;
 
 public class MainActivity extends Activity {
 
-    private ListView mListView;
-    private List<String> names = new ArrayList<String>() {
-        {
-            add("淡定");
-            add("淡定");
-            add("淡定");
-            add("淡定");
-            add("淡定");
-            add("淡定");
-            add("淡定");
-            add("淡定");
-            add("淡定");
-        }
-    };
-
+    private boolean isOk = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        mListView = (ListView) findViewById(R.id.listview);
-        mListView.setAdapter(new MyAdapter());
-
-        final GifView viewById1 = (GifView) findViewById(R.id.gifview);
 
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Request request = new Request.Builder().url("http://img.zcool.cn/community/01965756f0a5de6ac7257d202cc205.gif").build();
-
-                        try {
-                            final Response execute = new OkHttpClient().newCall(request).execute();
-                            final byte[] bytes = execute.body().bytes();
-                            new Handler(getMainLooper()).post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    viewById1.setFullImageView(false);
-                                    viewById1.setGifSource(bytes);
-
-                                }
-                            });
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }).start();
+                showAdTips( isOk ? "阿斯利康大神"  : "askdaksdahnksdajksdsaasdasdasd",true);
+                isOk = !isOk;
             }
         });
 
-//        ImageView viewById = (ImageView) findViewById(R.id.main_play_bottom_small_icon);
-//        viewById.setImageResource(R.drawable.danding);
-
-
-//        Bitmap bitmap = ((BitmapDrawable)ContextCompat.getDrawable(this ,R.drawable.xiaoshuo)).getBitmap();
-//
-//        Bitmap srcBitmap = ((BitmapDrawable) ContextCompat.getDrawable(this, R.drawable.main_albumbox_layer))
-// .getBitmap();
-//        Bitmap drawingBitmap = Bitmap.createBitmap(srcBitmap.getWidth(), srcBitmap.getHeight(), srcBitmap.getConfig
-// ());
-//        Canvas canvas = new Canvas(drawingBitmap);
-//        Paint paint = new Paint();
-//        canvas.drawBitmap(bitmap, new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()),
-//                new Rect(0, 0, srcBitmap.getWidth(), srcBitmap.getHeight()), paint);
-//        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-//        canvas.drawBitmap(srcBitmap, 0, 0, paint);
-//        ((ImageView)findViewById(R.id.haha)).setImageBitmap(drawingBitmap);
-
-        ImageView viewById = (ImageView) findViewById(R.id.large_img);
-        viewById.setImageResource(R.drawable.xiaoshuo);
+        findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideAdTips();
+            }
+        });
 
     }
+    private TextView adTip;
+    private RelativeLayout adTipLayout;
 
-    public class MyAdapter extends BaseAdapter {
 
-        @Override
-        public int getCount() {
-            return names.size();
+    /**
+     * 显示广告tips
+     * @param content
+     */
+    private void showAdTips(final CharSequence content ,boolean useAnimation) {
+        if(adTip == null) {
+            adTipLayout = new RelativeLayout(MainActivity.this);
+            setAdTipLayoutParam();
+
+            adTip = new TextView(MainActivity.this);
+            adTip.setBackgroundResource(R.drawable.main_ad_tip_bg);
+            adTip.setTextColor(ContextCompat.getColor(MainActivity.this ,android.R.color.white));
+            adTip.setTextSize(14);
+            adTip.setMaxLines(1);
+            adTip.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+            RelativeLayout.LayoutParams layoutTitleParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT , ViewGroup.LayoutParams.WRAP_CONTENT);
+            adTip.setLayoutParams(layoutTitleParams);
+            adTipLayout.addView(adTip);
+            ((ViewGroup)findViewById(R.id.main_rela_layout)).addView(adTipLayout);
+        } else {
+            setAdTipLayoutParam();
+        }
+
+        adTip.setVisibility(View.VISIBLE);
+
+        ViewGroup.LayoutParams layoutParams1 = adTip.getLayoutParams();
+        layoutParams1.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+        adTip.setLayoutParams(layoutParams1);
+        adTip.setText(content);
+        adTip.invalidate();
+
+        adTip.measure(0 ,0);
+        System.out.println("阿看那看 ===  " + adTip.getMeasuredWidth());
+
+        adTipLayout.measure(0 , 0);
+        int layoutMeasureWidth = adTipLayout.getMeasuredWidth();
+
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) adTip.getLayoutParams();
+        layoutParams.leftMargin = (layoutMeasureWidth - adTip.getMeasuredWidth()) / 2;
+
+        ObjectAnimator objectAnimator = ObjectAnimator.ofInt(adTip ,"width" , 0 ,adTip.getMeasuredWidth());
+        objectAnimator.start();
+    }
+
+//    private void hideAdTips() {
+//        if(adTip != null && adTip.getVisibility() == View.VISIBLE) {
+//            if(adTip.getText() != null) {
+//                final int width = adTip.getWidth();
+//                ObjectAnimator objectAnimator = ObjectAnimator.ofInt(adTip ,"width" , width,0);
+//                objectAnimator.setDuration(500);
+//                objectAnimator.addListener(new AnimatorListenerAdapter() {
+//                    @Override
+//                    public void onAnimationEnd(Animator animation) {
+//                        super.onAnimationEnd(animation);
+//                        adTip.setVisibility(View.INVISIBLE);
+//                    }
+//                });
+//                objectAnimator.start();
+//            } else {
+//                adTip.setVisibility(View.INVISIBLE);
+//            }
+//        }
+//    }
+
+    private void hideAdTips() {
+        if(adTip != null && adTip.getVisibility() == View.VISIBLE) {
+            if(adTip.getText() != null) {
+                final String text = adTip.getText().toString();
+                ValueAnimator animator = ValueAnimator.ofInt(text.length() , 1);
+                animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                        if(valueAnimator.getAnimatedValue() != null) {
+                            Integer animatedValue = (Integer) valueAnimator.getAnimatedValue();
+                            if(animatedValue <= 1) {
+                                adTip.setVisibility(View.INVISIBLE);
+                            } else {
+                                adTip.setText(text.substring(0 , animatedValue));
+                            }
+                        }
+                    }
+                });
+                animator.setDuration(500);
+                animator.start();
+            } else {
+                adTip.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
+
+
+    private void setAdTipLayoutParam() {
+        if(adTipLayout != null) {
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParams.topMargin = 500;
+            adTipLayout.setLayoutParams(layoutParams);
+        }
+    }
+
+    private CharSequence getShowAdTipContent(long time) {
+        String str1 = time / 1000 + "s | 去除广告声音 ";
+        String str2 = "t";
+
+        SpannableString msp = new SpannableString(str1 + str2);
+        Drawable drawable = ContextCompat.getDrawable(MainActivity.this ,R.drawable.main_player_vipad_arrow);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+
+        //居中对齐imageSpan
+        CenterAlignImageSpan imageSpan = new CenterAlignImageSpan(drawable);
+        msp.setSpan(imageSpan, str1.length(), str2.length() + str1.length() , ImageSpan.ALIGN_BASELINE);
+
+        return msp;
+    }
+
+    public class CenterAlignImageSpan extends ImageSpan {
+
+        public CenterAlignImageSpan(Drawable drawable) {
+            super(drawable);
+
+        }
+
+        public CenterAlignImageSpan(Bitmap b) {
+            super(b);
         }
 
         @Override
-        public Object getItem(int position) {
-            return names.get(position);
-        }
+        public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom,
+                         @NonNull Paint paint) {
 
-        @Override
-        public long getItemId(int position) {
-            return position;
+            Drawable b = getDrawable();
+            Paint.FontMetricsInt fm = paint.getFontMetricsInt();
+            int transY = (y + fm.descent + y + fm.ascent) / 2 - b.getBounds().bottom / 2;//计算y方向的位移
+            canvas.save();
+            canvas.translate(x, transY);//绘制图片位移一段距离
+            b.draw(canvas);
+            canvas.restore();
         }
+    }
 
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View inflate = LayoutInflater.from(MainActivity.this).inflate(R.layout.item_text, parent ,false);
-            ImageView imageView = (ImageView) inflate.findViewById(R.id.item_img);
-            imageView.setImageDrawable(ContextCompat.getDrawable(getApplicationContext() ,R.drawable.danding));
-            return inflate;
-        }
+    public static int dp2px(Context context, float dipValue)
+    {
+        if(context==null)
+            return (int) (dipValue * 1.5);
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
     }
 
 
