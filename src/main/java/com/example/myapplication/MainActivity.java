@@ -26,6 +26,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
     private boolean isOk = false;
+    private Xi mXi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,15 +36,21 @@ public class MainActivity extends Activity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAdTips( isOk ? "阿斯利康大神"  : "askdaksdahnksdajksdsaasdasdasd",true);
-                isOk = !isOk;
+                mXi=new Xi();
+                mXi.setX(new ximalaya() {
+                    @Override
+                    public void test() {
+                        System.out.println("阿克苏达开始");
+                    }
+                });
+
             }
         });
 
         findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hideAdTips();
+                mXi.getX().test();
             }
         });
 
