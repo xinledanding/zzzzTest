@@ -1,1 +1,146 @@
-<mxfile host="app.diagrams.net" modified="2021-08-17T12:50:26.071Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36" etag="AOG5MOMpP5f0ttTXQTDr" version="14.9.5" type="github"><diagram id="zl2bApfPTIHL2i8UlTtP" name="第 1 页">7Vddb5swFP01SNtDKr5LHkObbg/tNClSN/XNAQecGcyMaZL9+l1jAyGQtN2UTKqWh2COv67vOfdeYzg32fYTR0X6wGJMDduMt4Zza9j2te/CvwR2CvCmlgISTmIF7QEL8gtr0NRoRWJc9gYKxqggRR+MWJ7jSPQwxDnb9IetGO3vWqAED4BFhOgQ/UZikSo0sK87/DMmSdrsbPlT1ZOhZrA+SZmimG32IGduODecMaFa2fYGU+m7xi9q3t2R3tYwjnPxmglP3+Mvy4fwMXpac7r+zpx1uZ04apVnRCt9YG2s2DUewDE4RL8yLlKWsBzReYeGnFV5jOU2Jrx1Y+4ZKwC0AFxjIXaaXVQJBlAqMqp71Z5yo6Nn01DJKh7hEwdqNIJ4gsWJcW7LACgXswwLvoN5HFMkyHPfDqQ1lLTj2qlfGQELbVPL3Q402Vrtlmv2l1B26VkdWdDYM6ODagrfQKc1QqdPwQ9hwXGPVv9nJYUXLlH0I6kJnESMMm44M+mGZPnB9jxDSgosMQ/aH+WLpA3iKReTFcoI3amZsDLKirrTcVx4ZjinbIC2q2UsZ2WBItxfsqylIhe0zCuvEJ3B0ErkE9x4V1G6iDjG+SPBm+ak4Lj6sGrYQM6dWKXyNikReFHv79xuIIONCfMZc4G3p6U5lFKTAQ8U0SS2TZdNrGZMupdJfPO4+HqyeatG/PcW8ucJZcfrE9cSeaFQvh7SNPeNaWDM7kb5ukdLqLw9HyNKkhzaEbgUQ2SHUsgEattMd2QkjhWdGAIOLev1JKGFPFV9Ti80vNtTkaALr57clbt9Jo/r8GjYTMwrF35qrT+lsok5rz+DrVYlPgtp0/+x9ZrYcqf/uEyO1Mm5Z4BVM/99BNf0peAyvX52+7tAO39kuSfSYUsdNALPmAWyEVpGMMyUPGXZsiovUvntQ5WbI6XfHin9wblKv2W/nJ8ufT8a5IKxC9KYl852QbJe8VF0aS8daqm9jZzBS/DafZWq+O0+7Z35bw==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-08-17T13:17:53.769Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36" etag="Yp_RDFIh6NsZ_TDbTUdD" version="14.9.5" type="github">
+  <diagram id="zl2bApfPTIHL2i8UlTtP" name="第 1 页">
+    <mxGraphModel dx="899" dy="695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ZXdNbMBVcZjrljXo3jsx-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ZXdNbMBVcZjrljXo3jsx-1" target="ZXdNbMBVcZjrljXo3jsx-4" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZXdNbMBVcZjrljXo3jsx-1" value="&lt;pre style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;getFullScreenView&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="110" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ZXdNbMBVcZjrljXo3jsx-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ZXdNbMBVcZjrljXo3jsx-4" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZXdNbMBVcZjrljXo3jsx-7" value="是" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="ZXdNbMBVcZjrljXo3jsx-6" vertex="1" connectable="0">
+          <mxGeometry x="-0.4444" relative="1" as="geometry">
+            <mxPoint y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-2" value="否" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ZXdNbMBVcZjrljXo3jsx-4" target="PAiDak9LXnzkQadkl6Hd-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZXdNbMBVcZjrljXo3jsx-4" value="是否全屏" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="290" y="100" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="ZXdNbMBVcZjrljXo3jsx-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZXdNbMBVcZjrljXo3jsx-13" value="创建广告展示布局" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="290" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PAiDak9LXnzkQadkl6Hd-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="380" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="540" y="380" />
+              <mxPoint x="350" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-1" value="创建底部logo&lt;br&gt;创建广告展示布局" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="110" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PAiDak9LXnzkQadkl6Hd-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-8" value="&lt;pre style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;addAdToView&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-11" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="540" as="sourcePoint" />
+            <mxPoint x="270" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-12" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="540" as="sourcePoint" />
+            <mxPoint x="440" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-13" value="&lt;pre style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;GDTSplashAd&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-14" value="&lt;pre style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;CSJSplashAd&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PAiDak9LXnzkQadkl6Hd-15" target="PAiDak9LXnzkQadkl6Hd-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-15" value="&lt;pre style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;XmSplashAd&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="293.5" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PAiDak9LXnzkQadkl6Hd-16" target="PAiDak9LXnzkQadkl6Hd-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-16" value="&lt;pre style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;&lt;pre style=&quot;font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;AdSplashView&lt;/pre&gt;&lt;pre style=&quot;font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;setData&lt;/pre&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="293.5" y="740" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PAiDak9LXnzkQadkl6Hd-18" target="PAiDak9LXnzkQadkl6Hd-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-18" value="&lt;pre style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;SplashAdComponentFactory&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="235.25" y="880" width="236.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-24" value="&lt;pre style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;&lt;pre style=&quot;font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;SplashStaticImgAdComponent&lt;/pre&gt;&lt;/pre&gt;&lt;pre style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;SplashFullVideoAdComponent&lt;/pre&gt;&lt;pre style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;&lt;pre style=&quot;font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;SplashNormalVideoAdComponent&lt;/pre&gt;&lt;pre style=&quot;font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;SplashGifAdComponent&lt;/pre&gt;&lt;pre style=&quot;font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;&lt;pre style=&quot;font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;SplashWebAdComponent&lt;/pre&gt;&lt;pre style=&quot;font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;SplashLongAdComponent&lt;/pre&gt;&lt;pre style=&quot;font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;SplashUnitedAdComponent&lt;/pre&gt;&lt;/pre&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="195.25" y="1010" width="316.5" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PAiDak9LXnzkQadkl6Hd-26" target="PAiDak9LXnzkQadkl6Hd-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-26" value="&lt;pre style=&quot;background-color: #ffffff ; color: #000000 ; font-family: &amp;quot;menlo&amp;quot; , monospace ; font-size: 10.5pt&quot;&gt;setAdView&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="900" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-31" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="511.75" y="1030" width="50" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PAiDak9LXnzkQadkl6Hd-32" target="PAiDak9LXnzkQadkl6Hd-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-32" value="&lt;pre style=&quot;background-color: #ffffff ; color: #000000 ; font-family: &amp;quot;menlo&amp;quot; , monospace ; font-size: 10.5pt&quot;&gt;getView&lt;/pre&gt;" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="980" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PAiDak9LXnzkQadkl6Hd-34" target="PAiDak9LXnzkQadkl6Hd-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-34" value="&lt;pre style=&quot;background-color: #ffffff ; color: #000000 ; font-family: &amp;quot;menlo&amp;quot; , monospace ; font-size: 10.5pt&quot;&gt;buildHolder&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="1060" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PAiDak9LXnzkQadkl6Hd-36" target="PAiDak9LXnzkQadkl6Hd-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-36" value="&lt;pre style=&quot;background-color: #ffffff ; color: #000000 ; font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;&lt;pre style=&quot;font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;bindView&lt;/pre&gt;&lt;/pre&gt;" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="1140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PAiDak9LXnzkQadkl6Hd-38" target="PAiDak9LXnzkQadkl6Hd-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-38" value="addSourceFromView" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="1220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-40" value="&lt;pre style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;menlo&amp;#34; , monospace ; font-size: 10.5pt&quot;&gt;startCountDown&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="1300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PAiDak9LXnzkQadkl6Hd-42" target="PAiDak9LXnzkQadkl6Hd-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-42" value="点击引导" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PAiDak9LXnzkQadkl6Hd-43" value="https://alidocs.dingtalk.com/i/team/Y7kmb5pMZeDYXLq2/docs/Y7kmbxxPZA2gzLq2?corpId=ding51f195092fd77474&amp;amp;iframeQuery=#" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="75" y="1560" width="510" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
